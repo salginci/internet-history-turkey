@@ -40,7 +40,7 @@ async function fetchTimelineData(endpoint, section) {
                     <h3>${item.year}</h3>
                     <img src="${item.image}" alt="${item.event} - ${item.year}">
                     <p class="event-title">${item.event}</p>
-                    <p class="event-description">${item.description}</p>
+                    <blockquote class="event-description">${item.description}</blockquote>
                     ${item.source ? `
                         <div class="event-source">
                             Source: <a href="${item.source}" target="_blank">${item.source}</a>
