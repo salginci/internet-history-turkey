@@ -3,6 +3,8 @@ async function fetchTimelineData(endpoint, section) {
     if (!timelineContainer) return;
 
     timelineContainer.innerHTML = '<div class="loading">Loading timeline data...</div>';
+    console.log("calling: ", endpoint);
+    endpoint = endpoint.replace(/\/$/, ''); // Remove trailing slash if exists
 
     try {
         const response = await fetch(endpoint);
@@ -64,17 +66,29 @@ async function fetchTimelineData(endpoint, section) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function loadTimelineForCurrentPage() {
     const currentPath = window.location.pathname;
     let endpoint = 'https://ihsturkey-api-332658529949.europe-west1.run.app?q=';
     
-    let route = currentPath.replace('/', '');
+    let route = currentPath.replace(/^\/|\/$/g, ''); // Remove leading and trailing slashes
+    if (!route) route = "timeline";
+    
     endpoint = endpoint + route;
-    if (currentPath.includes('broadband')) {
-        fetchTimelineData(endpoint, 'timeline');
-    } else if (currentPath.includes('mobile')) {
-        fetchTimelineData(endpoint, 'timeline');
-    } else {
-        fetchTimelineData(endpoint, 'timeline');
+    fetchTimelineData(endpoint, 'timeline');
+}
+
+document.addEventListener('DOMContentLoaded', loadTimelineForCurrentPage);
+
+// Handle navigation changes
+window.addEventListener('popstate', loadTimelineForCurrentPage);
+
+// Intercept navigation clicks
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link && link.href.includes(window.location.origin)) {
+        e.preventDefault();
+        const newPath = link.href;
+        window.history.pushState({}, '', newPath);
+        loadTimelineForCurrentPage();
     }
 }); 
