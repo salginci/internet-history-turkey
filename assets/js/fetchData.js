@@ -66,7 +66,7 @@ async function fetchTimelineData(endpoint, section) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
-    let endpoint = 'http://localhost:8080/assets/data/data.json?q=';
+    let endpoint = 'https://ihsturkey-api-332658529949.europe-west1.run.app?q=';
     
     let route = currentPath.replace('/', '');
     endpoint = endpoint + route;
