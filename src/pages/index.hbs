@@ -1,0 +1,20 @@
+---
+title: "Home - Internet History"
+layout: "layout.hbs"
+data: internet_history
+---
+
+<section>
+    <h2>Internet History Timeline</h2>
+    <p>The internet in Turkey has evolved significantly since its first connection. Below is a timeline of key events:</p>
+
+    <div class="timeline">
+        {{#each timeline}}
+        <div class="timeline-event">
+            <h3>{{year}}</h3>
+            <p>{{event}}</p>
+            <img src="/images/{{image}}" alt="{{event}}">
+        </div>
+        {{/each}}
+    </div>
+</section>

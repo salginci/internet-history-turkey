@@ -1,0 +1,29 @@
+{
+    "timeline": [
+        {
+            "year": 1993,
+            "event": "First internet connection at METU via NSFNET.",
+            "image": "metu-1993.jpg"
+        },
+        {
+            "year": 1996,
+            "event": "First commercial ISPs launched (Superonline, TTNet).",
+            "image": "first-isps.jpg"
+        },
+        {
+            "year": 2000,
+            "event": "ADSL broadband internet introduced in Turkey.",
+            "image": "adsl-2000.jpg"
+        },
+        {
+            "year": 2005,
+            "event": "Fiber optic infrastructure projects launched.",
+            "image": "fiber-2005.jpg"
+        },
+        {
+            "year": 2010,
+            "event": "Public WiFi hotspots expand in major cities.",
+            "image": "wifi-2010.jpg"
+        }
+    ]
+}
