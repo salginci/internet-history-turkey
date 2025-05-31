@@ -1,6 +1,26 @@
 ---
-title: "Alarm - kronometre.com"
+title: "Online Alarm Kur - Ücretsiz Dijital Alarm Saati"
 layout: "layout.hbs"
+showClock: true
+seoContent: |
+    <h2>Online Alarm Saati - Güvenilir ve Ücretsiz Alarm Kurma Aracı</h2>
+    
+    <p>Online alarm saati uygulamamız ile istediğiniz zaman alarm kurabilir, hatırlatıcılar oluşturabilirsiniz. Modern ve kullanıcı dostu arayüzümüz sayesinde alarm kurmak artık çok daha kolay.</p>
+    
+    <h2>Özellikler</h2>
+    <ul>
+        <li>Ücretsiz ve reklamsız kullanım</li>
+        <li>Çeşitli alarm sesleri (klasik çan, dijital alarm, okul zili ve daha fazlası)</li>
+        <li>Tekrarlayan alarmlar oluşturma imkanı</li>
+        <li>Mobil uyumlu tasarım</li>
+        <li>Kolay kullanılabilir arayüz</li>
+    </ul>
+    
+    <h2>Nasıl Kullanılır?</h2>
+    <p>Alarm kurmak için saat ve dakika seçin, istediğiniz alarm sesini belirleyin ve "Başlat" butonuna tıklayın. Alarm zamanı geldiğinde seçtiğiniz ses çalacak ve bildirim alacaksınız. Tekrarlayan alarmlar için "Yinele" seçeneğini kullanabilirsiniz.</p>
+    
+    <h2>Neden Online Alarm?</h2>
+    <p>Online alarm saati kullanmanın birçok avantajı vardır. Herhangi bir uygulama indirmenize gerek kalmaz, tarayıcınız üzerinden hemen kullanmaya başlayabilirsiniz. Ayrıca, farklı cihazlarınızda senkronize çalışır ve internet bağlantınız olduğu sürece güvenilir bir şekilde çalışmaya devam eder.</p>
 ---
 
 <div class="clock-container">
@@ -14,6 +34,18 @@ layout: "layout.hbs"
                 <i class="ri-alarm-line"></i>
                 <span>Alarm Kur</span>
             </button>
+        </div>
+    </div>
+
+    <!-- Alarms List (Stopwatch Lap Design) -->
+    <div class="laps-container alarms-list-container">
+        <div class="laps-header">
+            <span>Saat</span>
+            <span>Kalan Süre</span>
+            <span>İşlem</span>
+        </div>
+        <div class="alarms-list">
+            <!-- Alarms will be dynamically added here as .lap-item -->
         </div>
     </div>
 
@@ -67,15 +99,7 @@ layout: "layout.hbs"
                 <div class="sound-selector">
                     <select class="alarm-sound">
                         <option value="classic-bell">Klasik Çan</option>
-                        <option value="digital-alarm">Dijital Alarm</option>
-                        <option value="counter-bell">Masa Zili</option>
-                        <option value="school-bell">Okul Zili</option>
-                        <option value="modern-ding">Modern Ding</option>
-                        <option value="church-bell">Kilise Çanı</option>
                         <option value="electronic-beep">Elektronik Bip</option>
-                        <option value="alarm-clock">Çalar Saat</option>
-                        <option value="digital-watch">Dijital Saat</option>
-                        <option value="emergency">Acil Durum</option>
                     </select>
                     <button class="play-sound">
                         <i class="ri-play-line"></i>
@@ -84,11 +108,6 @@ layout: "layout.hbs"
                         <i class="ri-more-2-fill"></i>
                     </button>
                 </div>
-            </div>
-
-            <div class="title-section">
-                <label>Başlık</label>
-                <input type="text" class="alarm-title" placeholder="Alarm" value="Alarm">
             </div>
 
             <div class="repeat-section">
@@ -106,6 +125,15 @@ layout: "layout.hbs"
                 <button class="save-alarm">Başlat</button>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Alarm Trigger Modal -->
+<div class="modal alarm-trigger-modal" id="alarmTriggerModal">
+    <div class="modal-content alarm-trigger-content">
+        <div class="alarm-animation"></div>
+        <h2>Alarm Çalıyor!</h2>
+        <button class="close-alarm-trigger">Kapat</button>
     </div>
 </div>
 

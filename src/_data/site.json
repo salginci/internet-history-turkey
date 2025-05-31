@@ -1,0 +1,10 @@
+{
+    "enableAds": false,
+    "adsense": {
+        "client": "ca-pub-XXXXXXXXXXXXXXXX",
+        "slots": {
+            "left-sidebar": "XXXXXXXXXX",
+            "right-sidebar": "XXXXXXXXXX"
+        }
+    }
+} 

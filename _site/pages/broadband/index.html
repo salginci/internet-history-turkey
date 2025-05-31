@@ -1,30 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broadband &amp; WiFi - Internet History</title>
+    <meta name="description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı. Hemen alarmınızı kurun, hatırlatıcılarınızı ayarlayın.">
+    <meta name="keywords" content="online alarm, alarm kur, dijital saat, zamanlayıcı, hatırlatıcı, Türkçe alarm, ücretsiz alarm">
+    <meta name="language" content="Turkish">
+    <meta name="geo.region" content="TR">
+    <link rel="canonical" href="https://your-domain.com/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Broadband &amp; WiFi - Internet History">
+    <meta property="og:description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="/assets/images/logo.png" alt="Internet History of Turkey Logo">
-            </div>
-            <h1>History of the Internet in Turkey</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/broadband/">Broadband & WiFi</a></li>
-                    <li><a href="/mobile/">Mobile & Trends</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
 
-    <main>
-        
+    <style>
+        :root {
+            --primary-color: #ff9800; /* Example primary color (orange) */
+            --primary-color-rgb: 255, 152, 0;
+            --secondary-color: #2196f3; /* Example secondary color (blue) */
+            --secondary-color-rgb: 33, 150, 243;
+            --text-color: #fff;
+            --text-secondary: #ccc;
+            --bg-color: #1e1e1e;
+            --card-bg: #2c2c2c;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Add or adjust other global styles here as needed */
+
+        /* Add styles for SEO content area */
+        .seo-content-area {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .seo-content-area h2 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .seo-content-area p {
+            margin-bottom: 1rem;
+        }
+
+        .seo-content-area ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .seo-content-area li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .seo-content-area {
+                padding: 1.5rem;
+                margin: 1.5rem auto;
+            }
+        }
+
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <header>
+            <div class="top-navbar">
+                <div class="navbar-left">
+                    <a href="/" class="logo">kronometre<span>.com</span></a>
+                </div>
+
+                <nav class="main-nav">
+                    <a href="/alarm" class="nav-item">
+                        <i class="ri-alarm-line"></i>
+                        <span>Alarm</span>
+                    </a>
+                    <a href="/zamanlayici" class="nav-item">
+                        <i class="ri-timer-line"></i>
+                        <span>Zamanlayıcı</span>
+                    </a>
+                    <a href="/kronometre" class="nav-item">
+                        <i class="ri-timer-2-line"></i>
+                        <span>Kronometre</span>
+                    </a>
+                    <a href="/tatiller" class="nav-item">
+                        <i class="ri-calendar-event-line"></i>
+                        <span>Tatiller</span>
+                    </a>
+                </nav>
+
+                <div class="mobile-nav-links">
+                    <nav class="main-nav">
+                        <a href="/alarm" class="nav-item">
+                            <i class="ri-alarm-line"></i>
+                            <span>Alarm</span>
+                        </a>
+                        <a href="/zamanlayici" class="nav-item">
+                            <i class="ri-timer-line"></i>
+                            <span>Zamanlayıcı</span>
+                        </a>
+                        <a href="/kronometre" class="nav-item">
+                            <i class="ri-timer-2-line"></i>
+                            <span>Kronometre</span>
+                        </a>
+                         <a href="/tatiller" class="nav-item">
+                             <i class="ri-calendar-event-line"></i>
+                             <span>Tatiller</span>
+                         </a>
+                    </nav>
+                </div>
+
+
+                <div class="nav-right">
+                     <button class="theme-toggle">
+                        <i class="ri-moon-line"></i>
+                    </button>
+                    <button class="hamburger-icon" aria-label="Menu">
+                        <i class="ri-menu-line"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="content">
+            
 <section>
     <h2>Broadband & Public WiFi in Turkey</h2>
     <p>Broadband internet has transformed Turkey's digital landscape, improving speeds and accessibility across the country.</p>
@@ -33,10 +161,16 @@
 Public WiFi networks have also grown rapidly, allowing people to connect on the go in cafes, airports, and public spaces. This section covers the milestones of Turkey’s broadband revolution and the rise of public internet access.</p>
 </section>
  
-    </main>
+            
+            <div class="seo-content-area">
+                
+            </div>
+        </main>
+    </div>
 
-    <footer>
-        <p>© 2025 History of Internet in Turkey</p>
-    </footer>
+    <!-- Scripts -->
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

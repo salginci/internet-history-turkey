@@ -1,20 +1,91 @@
 ---
-title: "Home - Internet History"
+title: "Saat kaç - kronometre.com"
 layout: "layout.hbs"
-data: internet_history
 ---
 
-<section>
-    <h2>Internet History Timeline</h2>
-    <p>The internet in Turkey has evolved significantly since its first connection. Below is a timeline of key events:</p>
+<div class="clock-container">
+    <div class="main-clock-section">
+        {{> adsense-display id="left-sidebar" }}
 
-    <div class="timeline">
-        {{#each timeline}}
-        <div class="timeline-event">
-            <h3>{{year}}</h3>
-            <p>{{event}}</p>
-            <img src="/images/{{image}}" alt="{{event}}">
+        <div class="digital-clock-wrapper">
+            <h1 class="page-title">Saat kaç</h1>
+            <div class="digital-clock">
+                <div class="time">22:49</div>
+                <div class="date">Cuma - 2 Mayıs 2025</div>
+            </div>
         </div>
-        {{/each}}
+
+        {{> adsense-display id="right-sidebar" }}
     </div>
-</section>
+
+    <div class="orange-box">
+        <span>REKLAM ALANI</span>
+    </div>
+
+    <div class="world-clocks">
+        <div class="world-clock-item">
+            <div class="city-info">
+                <span class="city">İstanbul</span>
+                <div class="controls">
+                    <i class="ri-computer-line"></i>
+                    <i class="ri-more-2-fill"></i>
+                </div>
+            </div>
+            <div class="time">00:22:49</div>
+            <div class="date-info">Bugün, +0 S</div>
+        </div>
+
+        <div class="world-clock-item">
+            <div class="city-info">
+                <span class="city">Riyad, Suudi Arabistan</span>
+                <div class="controls">
+                    <i class="ri-computer-line"></i>
+                    <i class="ri-more-2-fill"></i>
+                </div>
+            </div>
+            <div class="time">00:22:49</div>
+            <div class="date-info">Bugün, +0 S</div>
+        </div>
+
+        <div class="world-clock-item">
+            <div class="city-info">
+                <span class="city">New York, ABD</span>
+                <div class="controls">
+                    <i class="ri-computer-line"></i>
+                    <i class="ri-more-2-fill"></i>
+                </div>
+            </div>
+            <div class="time">17:22:49</div>
+            <div class="date-info">Dün, -7 S</div>
+        </div>
+
+        <div class="world-clock-item">
+            <div class="city-info">
+                <span class="city">Londra, Birleşik Krallık</span>
+                <div class="controls">
+                    <i class="ri-computer-line"></i>
+                    <i class="ri-more-2-fill"></i>
+                </div>
+            </div>
+            <div class="time">22:22:49</div>
+            <div class="date-info">Dün, -2 S</div>
+        </div>
+    </div>
+</div>
+
+<div class="action-buttons">
+    <button class="action-button" title="Paylaş">
+        <i class="ri-share-line"></i>
+    </button>
+    <button class="action-button" title="Küçült">
+        <i class="ri-subtract-line"></i>
+    </button>
+    <button class="action-button" title="Büyüt">
+        <i class="ri-add-line"></i>
+    </button>
+    <button class="action-button" title="Tam Ekran">
+        <i class="ri-fullscreen-line"></i>
+    </button>
+</div>
+
+<script src="/assets/js/clock.js"></script>

@@ -1,0 +1,73 @@
+---
+title: "Online Kronometre - Ücretsiz Dijital Kronometre"
+layout: "layout.hbs"
+showClock: false
+seoContent: |
+    <h2>Online Kronometre - Hassas Zaman Ölçümü İçin Profesyonel Araç</h2>
+    
+    <p>Profesyonel ihtiyaçlarınız için tasarlanmış online kronometre uygulamamız ile hassas zaman ölçümü yapabilirsiniz. Spor antrenmanları, egzersizler, yarışmalar veya herhangi bir zaman ölçümü ihtiyacınız için ideal çözüm.</p>
+    
+    <h2>Özellikler</h2>
+    <ul>
+        <li>Milisaniye hassasiyetinde ölçüm</li>
+        <li>Tur zamanı kaydetme özelliği</li>
+        <li>Kolay kullanılabilir arayüz</li>
+        <li>Mobil uyumlu tasarım</li>
+        <li>Ücretsiz ve reklamsız kullanım</li>
+    </ul>
+    
+    <h2>Kullanım Alanları</h2>
+    <p>Online kronometremiz birçok farklı alanda kullanılabilir:</p>
+    <ul>
+        <li>Spor antrenmanları ve egzersizler</li>
+        <li>Yarışma ve müsabakalar</li>
+        <li>Akademik deneyler ve laboratuvar çalışmaları</li>
+        <li>Performans ölçümleri</li>
+        <li>Kişisel gelişim ve zaman yönetimi</li>
+    </ul>
+    
+    <h2>Neden Online Kronometre?</h2>
+    <p>Online kronometre kullanmanın avantajları saymakla bitmez. Herhangi bir uygulama indirmenize gerek kalmaz, tarayıcınız üzerinden hemen kullanmaya başlayabilirsiniz. Ayrıca, farklı cihazlarınızda senkronize çalışır ve internet bağlantınız olduğu sürece güvenilir bir şekilde çalışmaya devam eder.</p>
+---
+
+<link rel="stylesheet" href="/assets/css/stopwatch.css">
+
+<div class="clock-container">
+    <h1 class="page-title">Kronometre</h1>
+    
+    <div class="digital-clock">
+        <div class="time">00:00:00</div>
+        <div class="date-container">
+            <button class="set-alarm-btn">
+                <i class="ri-play-line"></i>
+                <span>Başlat</span>
+            </button>
+            <button class="lap-btn" disabled>
+                <i class="ri-flag-line"></i>
+                <span>Tur</span>
+            </button>
+            <button class="reset-btn" disabled>
+                <i class="ri-refresh-line"></i>
+                <span>Sıfırla</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="laps-container">
+        <div class="laps-header">
+            <span>Tur</span>
+            <span>Süre</span>
+            <span>Fark</span>
+        </div>
+        <div class="laps-list">
+            <!-- Lap times will be added here dynamically -->
+        </div>
+    </div>
+
+    <div class="advertisement-box">
+        <span class="ad-text">Reklam</span>
+        <span class="ad-size">728x90</span>
+    </div>
+</div>
+
+<script src="/assets/js/stopwatch.js"></script> 

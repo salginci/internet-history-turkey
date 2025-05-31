@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Online Alarm Kur - Ücretsiz Dijital Alarm Saati</title>
     <meta name="description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı. Hemen alarmınızı kurun, hatırlatıcılarınızı ayarlayın.">
     <meta name="keywords" content="online alarm, alarm kur, dijital saat, zamanlayıcı, hatırlatıcı, Türkçe alarm, ücretsiz alarm">
     <meta name="language" content="Turkish">
@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://your-domain.com/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="Online Alarm Kur - Ücretsiz Dijital Alarm Saati">
     <meta property="og:description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
-    {{#if site.enableAds}}
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{site.adsense.client}}" crossorigin="anonymous"></script>
-    {{/if}}
 
     <style>
         :root {
@@ -102,7 +98,6 @@
                     <a href="/" class="logo">kronometre<span>.com</span></a>
                 </div>
 
-                {{!-- Main Navigation (visible on larger screens) - Moved outside mobile-nav-links --}}
                 <nav class="main-nav">
                     <a href="/alarm" class="nav-item">
                         <i class="ri-alarm-line"></i>
@@ -122,9 +117,7 @@
                     </a>
                 </nav>
 
-                {{!-- Mobile navigation links (hidden by default on larger screens) – now contains the main nav so that it is toggled on mobile – the hamburger icon (inside nav-right) toggles this div --}}
                 <div class="mobile-nav-links">
-                    {{!-- Re-inserted main navigation (hidden on larger screens, toggled on mobile) --}}
                     <nav class="main-nav">
                         <a href="/alarm" class="nav-item">
                             <i class="ri-alarm-line"></i>
@@ -145,13 +138,11 @@
                     </nav>
                 </div>
 
-                {{!-- (Hamburger icon (hidden on larger screens) is now inside nav-right and toggles the mobile-nav-links div.) --}}
 
                 <div class="nav-right">
                      <button class="theme-toggle">
                         <i class="ri-moon-line"></i>
                     </button>
-                    {{!-- Re-inserted hamburger icon (hidden on larger screens) inside nav-right – toggles the mobile menu --}}
                     <button class="hamburger-icon" aria-label="Menu">
                         <i class="ri-menu-line"></i>
                     </button>
@@ -161,33 +152,150 @@
 
         <!-- Page Content -->
         <main class="content">
-            {{{ content }}}
             
-            {{!-- SEO Content Area --}}
+<div class="clock-container">
+    <h1 class="page-title">Alarm</h1>
+    
+    <div class="digital-clock">
+        <div class="time">00:22:49</div>
+        <div class="date-container">
+            <div class="date">Cuma - 2 Mayıs 2025</div>
+            <button class="set-alarm-btn">
+                <i class="ri-alarm-line"></i>
+                <span>Alarm Kur</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Alarms List (Stopwatch Lap Design) -->
+    <div class="laps-container alarms-list-container">
+        <div class="laps-header">
+            <span>Saat</span>
+            <span>Kalan Süre</span>
+            <span>İşlem</span>
+        </div>
+        <div class="alarms-list">
+            <!-- Alarms will be dynamically added here as .lap-item -->
+        </div>
+    </div>
+
+    <div class="advertisement-box">
+        <span class="ad-text">Reklam</span>
+        <span class="ad-size">728x90</span>
+    </div>
+</div>
+
+<!-- Alarm Setup Modal -->
+<div class="modal" id="alarmModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Alarm Düzenle</h2>
+            <button class="close-modal">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="time-picker">
+                <div class="time-section">
+                    <label>Saat</label>
+                    <div class="time-input">
+                        <button class="time-arrow prev">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </button>
+                        <input type="text" class="hour-input" value="01" readonly>
+                        <button class="time-arrow next">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="time-section">
+                    <label>Dakika</label>
+                    <div class="time-input">
+                        <button class="time-arrow prev">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </button>
+                        <input type="text" class="minute-input" value="00" readonly>
+                        <button class="time-arrow next">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sound-section">
+                <label>Ses</label>
+                <div class="sound-selector">
+                    <select class="alarm-sound">
+                        <option value="classic-bell">Klasik Çan</option>
+                        <option value="electronic-beep">Elektronik Bip</option>
+                    </select>
+                    <button class="play-sound">
+                        <i class="ri-play-line"></i>
+                    </button>
+                    <button class="sound-options">
+                        <i class="ri-more-2-fill"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="repeat-section">
+                <label class="repeat-label">
+                    <input type="checkbox" class="repeat-checkbox">
+                    <span class="checkbox-text">Yinele</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="test-alarm">Test Et</button>
+            <div class="right-buttons">
+                <button class="cancel-alarm">İptal</button>
+                <button class="save-alarm">Başlat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Alarm Trigger Modal -->
+<div class="modal alarm-trigger-modal" id="alarmTriggerModal">
+    <div class="modal-content alarm-trigger-content">
+        <div class="alarm-animation"></div>
+        <h2>Alarm Çalıyor!</h2>
+        <button class="close-alarm-trigger">Kapat</button>
+    </div>
+</div>
+
+<script src="/assets/js/alarm.js"></script> 
+            
             <div class="seo-content-area">
-                {{{seoContent}}}
+                <h2>Online Alarm Saati - Güvenilir ve Ücretsiz Alarm Kurma Aracı</h2>
+
+<p>Online alarm saati uygulamamız ile istediğiniz zaman alarm kurabilir, hatırlatıcılar oluşturabilirsiniz. Modern ve kullanıcı dostu arayüzümüz sayesinde alarm kurmak artık çok daha kolay.</p>
+
+<h2>Özellikler</h2>
+<ul>
+    <li>Ücretsiz ve reklamsız kullanım</li>
+    <li>Çeşitli alarm sesleri (klasik çan, dijital alarm, okul zili ve daha fazlası)</li>
+    <li>Tekrarlayan alarmlar oluşturma imkanı</li>
+    <li>Mobil uyumlu tasarım</li>
+    <li>Kolay kullanılabilir arayüz</li>
+</ul>
+
+<h2>Nasıl Kullanılır?</h2>
+<p>Alarm kurmak için saat ve dakika seçin, istediğiniz alarm sesini belirleyin ve "Başlat" butonuna tıklayın. Alarm zamanı geldiğinde seçtiğiniz ses çalacak ve bildirim alacaksınız. Tekrarlayan alarmlar için "Yinele" seçeneğini kullanabilirsiniz.</p>
+
+<h2>Neden Online Alarm?</h2>
+<p>Online alarm saati kullanmanın birçok avantajı vardır. Herhangi bir uygulama indirmenize gerek kalmaz, tarayıcınız üzerinden hemen kullanmaya başlayabilirsiniz. Ayrıca, farklı cihazlarınızda senkronize çalışır ve internet bağlantınız olduğu sürece güvenilir bir şekilde çalışmaya devam eder.</p>
+
             </div>
         </main>
     </div>
 
     <!-- Scripts -->
-    {{#if showClock}}
     <script src="/assets/js/clock.js"></script>
-    {{/if}}
 
-    {{#if site.analytics.id}}
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.analytics.id}}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{site.analytics.id}}', {
-            'language': 'tr',
-            'country': 'TR'
-        });
-    </script>
-    {{/if}}
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/main.js"></script>
 </body>

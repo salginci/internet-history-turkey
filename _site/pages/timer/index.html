@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Zamanlayıcı - kronometre.com</title>
     <meta name="description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı. Hemen alarmınızı kurun, hatırlatıcılarınızı ayarlayın.">
     <meta name="keywords" content="online alarm, alarm kur, dijital saat, zamanlayıcı, hatırlatıcı, Türkçe alarm, ücretsiz alarm">
     <meta name="language" content="Turkish">
@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://your-domain.com/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="Zamanlayıcı - kronometre.com">
     <meta property="og:description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
-    {{#if site.enableAds}}
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{site.adsense.client}}" crossorigin="anonymous"></script>
-    {{/if}}
 
     <style>
         :root {
@@ -102,7 +98,6 @@
                     <a href="/" class="logo">kronometre<span>.com</span></a>
                 </div>
 
-                {{!-- Main Navigation (visible on larger screens) - Moved outside mobile-nav-links --}}
                 <nav class="main-nav">
                     <a href="/alarm" class="nav-item">
                         <i class="ri-alarm-line"></i>
@@ -122,9 +117,7 @@
                     </a>
                 </nav>
 
-                {{!-- Mobile navigation links (hidden by default on larger screens) – now contains the main nav so that it is toggled on mobile – the hamburger icon (inside nav-right) toggles this div --}}
                 <div class="mobile-nav-links">
-                    {{!-- Re-inserted main navigation (hidden on larger screens, toggled on mobile) --}}
                     <nav class="main-nav">
                         <a href="/alarm" class="nav-item">
                             <i class="ri-alarm-line"></i>
@@ -145,13 +138,11 @@
                     </nav>
                 </div>
 
-                {{!-- (Hamburger icon (hidden on larger screens) is now inside nav-right and toggles the mobile-nav-links div.) --}}
 
                 <div class="nav-right">
                      <button class="theme-toggle">
                         <i class="ri-moon-line"></i>
                     </button>
-                    {{!-- Re-inserted hamburger icon (hidden on larger screens) inside nav-right – toggles the mobile menu --}}
                     <button class="hamburger-icon" aria-label="Menu">
                         <i class="ri-menu-line"></i>
                     </button>
@@ -161,33 +152,95 @@
 
         <!-- Page Content -->
         <main class="content">
-            {{{ content }}}
             
-            {{!-- SEO Content Area --}}
+<div class="timer-container">
+    <h1 class="page-title">Zamanlayıcı</h1>
+
+    <div class="timer-display">
+        <div class="time-display">
+            <span id="timer-hours">00</span>:<span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+        </div>
+        <div class="timer-controls">
+            <button id="startTimer" class="btn primary">Başlat</button>
+            <button id="pauseTimer" class="btn secondary" style="display: none;">Duraklat</button>
+            <button id="resetTimer" class="btn danger">Sıfırla</button>
+        </div>
+    </div>
+
+    <div class="quick-timers">
+        <h2>Hızlı Zamanlayıcılar</h2>
+        <div class="time-grid">
+            <button class="time-btn" data-minutes="1">1 dakika</button>
+            <button class="time-btn" data-minutes="3">3 dakika</button>
+            <button class="time-btn" data-minutes="5">5 dakika</button>
+            <button class="time-btn" data-minutes="10">10 dakika</button>
+            <button class="time-btn" data-minutes="15">15 dakika</button>
+            <button class="time-btn" data-minutes="20">20 dakika</button>
+            <button class="time-btn" data-minutes="30">30 dakika</button>
+            <button class="time-btn" data-minutes="45">45 dakika</button>
+            <button class="time-btn" data-minutes="60">1 saat</button>
+            <button class="time-btn" data-minutes="90">1.5 saat</button>
+            <button class="time-btn" data-minutes="120">2 saat</button>
+            <button class="time-btn" data-minutes="180">3 saat</button>
+        </div>
+    </div>
+
+    <!-- Timer Settings Modal -->
+    <div id="timerSettingsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Zamanlayıcı Ayarla</h2>
+            <div class="time-picker">
+                <div class="time-input">
+                    <label>Saat</label>
+                    <input type="number" id="hourInput" min="0" max="23" value="0">
+                </div>
+                <div class="time-input">
+                    <label>Dakika</label>
+                    <input type="number" id="minuteInput" min="0" max="59" value="0">
+                </div>
+                <div class="time-input">
+                    <label>Saniye</label>
+                    <input type="number" id="secondInput" min="0" max="59" value="0">
+                </div>
+            </div>
+            <div class="timer-options">
+                <div class="option">
+                    <label>
+                        <input type="checkbox" id="repeatTimer"> Tekrarla
+                    </label>
+                </div>
+                <div class="option">
+                    <label>Ses</label>
+                    <select id="timerSound">
+                        <option value="beep">Beep</option>
+                        <option value="digital">Dijital</option>
+                        <option value="bell">Zil</option>
+                        <option value="melody">Melodi</option>
+                    </select>
+                </div>
+                <div class="option">
+                    <label>Başlık</label>
+                    <input type="text" id="timerTitle" placeholder="Zamanlayıcı başlığı">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="cancelTimer" class="btn secondary">İptal</button>
+                <button id="saveTimer" class="btn primary">Başlat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/timer.js"></script> 
+            
             <div class="seo-content-area">
-                {{{seoContent}}}
+                
             </div>
         </main>
     </div>
 
     <!-- Scripts -->
-    {{#if showClock}}
-    <script src="/assets/js/clock.js"></script>
-    {{/if}}
 
-    {{#if site.analytics.id}}
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.analytics.id}}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{site.analytics.id}}', {
-            'language': 'tr',
-            'country': 'TR'
-        });
-    </script>
-    {{/if}}
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/main.js"></script>
 </body>

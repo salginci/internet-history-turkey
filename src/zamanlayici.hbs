@@ -1,0 +1,96 @@
+---
+title: "Online Zamanlayıcı - Ücretsiz Geri Sayım Sayacı"
+layout: "layout.hbs"
+showClock: false
+seoContent: |
+    <h2>Online Zamanlayıcı - Profesyonel Geri Sayım Aracı</h2>
+    
+    <p>Online zamanlayıcı uygulamamız ile istediğiniz süre için geri sayım başlatabilirsiniz. Yemek pişirme, egzersiz, sunum hazırlığı veya herhangi bir zamanlama ihtiyacınız için mükemmel çözüm.</p>
+    
+    <h2>Özellikler</h2>
+    <ul>
+        <li>Kolay ayarlanabilir süre seçimi</li>
+        <li>Özelleştirilebilir alarm sesleri</li>
+        <li>Hızlı başlatma seçenekleri (1, 5, 10, 15, 30 dakika)</li>
+        <li>Mobil uyumlu tasarım</li>
+        <li>Ücretsiz ve reklamsız kullanım</li>
+    </ul>
+    
+    <h2>Kullanım Alanları</h2>
+    <p>Online zamanlayıcımız günlük hayatta birçok farklı amaç için kullanılabilir:</p>
+    <ul>
+        <li>Mutfakta yemek pişirme süreleri</li>
+        <li>Spor ve egzersiz zamanlaması</li>
+        <li>Sunum ve toplantı süreleri</li>
+        <li>Çalışma ve mola zamanları</li>
+        <li>Oyun ve aktivite süreleri</li>
+    </ul>
+    
+    <h2>Neden Online Zamanlayıcı?</h2>
+    <p>Online zamanlayıcı kullanmanın birçok avantajı vardır. Herhangi bir uygulama indirmenize gerek kalmaz, tarayıcınız üzerinden hemen kullanmaya başlayabilirsiniz. Ayrıca, farklı cihazlarınızda senkronize çalışır ve internet bağlantınız olduğu sürece güvenilir bir şekilde çalışmaya devam eder.</p>
+---
+
+<link rel="stylesheet" href="/assets/css/stopwatch.css">
+
+<div class="clock-container">
+    <h1 class="page-title">Zamanlayıcı</h1>
+    
+    <div class="digital-clock">
+        <div class="time">00:00:00</div>
+        <div class="date-container">
+            <button class="set-alarm-btn">
+                <i class="ri-settings-3-line"></i>
+                <span>Kur</span>
+            </button>
+            <button class="set-alarm-btn start-btn" style="display:none">
+                <i class="ri-play-line"></i>
+                <span>Başlat</span>
+            </button>
+            <button class="set-alarm-btn stop-btn" style="display:none">
+                <i class="ri-pause-line"></i>
+                <span>Durdur</span>
+            </button>
+            <button class="set-alarm-btn resume-btn" style="display:none">
+                <i class="ri-play-line"></i>
+                <span>Devam</span>
+            </button>
+            <button class="set-alarm-btn reset-btn" style="display:none">
+                <i class="ri-refresh-line"></i>
+                <span>Sıfırla</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Timer Setup Modal -->
+    <div class="timer-modal" id="timerModal" style="display: none;">
+        <div class="timer-modal-content">
+            <h2>Zamanlayıcıyı Ayarla</h2>
+            <div class="timer-inputs">
+                <label>
+                    Saat
+                    <input type="number" id="inputHour" min="0" max="99" value="0">
+                </label>
+                <label>
+                    Dakika
+                    <input type="number" id="inputMinute" min="0" max="59" value="0">
+                </label>
+                <label>
+                    Saniye
+                    <input type="number" id="inputSecond" min="0" max="59" value="0">
+                </label>
+            </div>
+            <div class="timer-modal-actions">
+                <button id="confirmTimer" class="modal-confirm-btn">Onayla</button>
+                <button id="cancelTimer" class="modal-cancel-btn">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="advertisement-box">
+        <span class="ad-text">Reklam</span>
+        <span class="ad-size">728x90</span>
+    </div>
+</div>
+
+<!-- Modal CSS and JS will be added next -->
+<script src="/assets/js/timer.js"></script> 

@@ -1,0 +1,19 @@
+{{#if site.enableAds}}
+    {{#with (lookup site.adsense.slots id)}}
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="{{../site.adsense.client}}"
+         data-ad-slot="{{this}}"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    {{/with}}
+{{else}}
+    <div class="ad-placeholder">
+        <span class="ad-text">Advertisement</span>
+        <span class="ad-size">300 x 600</span>
+        <span class="ad-location">{{id}}</span>
+    </div>
+{{/if}} 

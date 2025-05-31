@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Kronometre - kronometre.com</title>
     <meta name="description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı. Hemen alarmınızı kurun, hatırlatıcılarınızı ayarlayın.">
     <meta name="keywords" content="online alarm, alarm kur, dijital saat, zamanlayıcı, hatırlatıcı, Türkçe alarm, ücretsiz alarm">
     <meta name="language" content="Turkish">
@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://your-domain.com/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="Kronometre - kronometre.com">
     <meta property="og:description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
-    {{#if site.enableAds}}
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{site.adsense.client}}" crossorigin="anonymous"></script>
-    {{/if}}
 
     <style>
         :root {
@@ -102,7 +98,6 @@
                     <a href="/" class="logo">kronometre<span>.com</span></a>
                 </div>
 
-                {{!-- Main Navigation (visible on larger screens) - Moved outside mobile-nav-links --}}
                 <nav class="main-nav">
                     <a href="/alarm" class="nav-item">
                         <i class="ri-alarm-line"></i>
@@ -122,9 +117,7 @@
                     </a>
                 </nav>
 
-                {{!-- Mobile navigation links (hidden by default on larger screens) – now contains the main nav so that it is toggled on mobile – the hamburger icon (inside nav-right) toggles this div --}}
                 <div class="mobile-nav-links">
-                    {{!-- Re-inserted main navigation (hidden on larger screens, toggled on mobile) --}}
                     <nav class="main-nav">
                         <a href="/alarm" class="nav-item">
                             <i class="ri-alarm-line"></i>
@@ -145,13 +138,11 @@
                     </nav>
                 </div>
 
-                {{!-- (Hamburger icon (hidden on larger screens) is now inside nav-right and toggles the mobile-nav-links div.) --}}
 
                 <div class="nav-right">
                      <button class="theme-toggle">
                         <i class="ri-moon-line"></i>
                     </button>
-                    {{!-- Re-inserted hamburger icon (hidden on larger screens) inside nav-right – toggles the mobile menu --}}
                     <button class="hamburger-icon" aria-label="Menu">
                         <i class="ri-menu-line"></i>
                     </button>
@@ -161,33 +152,40 @@
 
         <!-- Page Content -->
         <main class="content">
-            {{{ content }}}
             
-            {{!-- SEO Content Area --}}
+<div class="stopwatch-container">
+    <h1 class="page-title">Kronometre</h1>
+
+    <div class="stopwatch-display">
+        <div class="time-display">
+            <span id="stopwatch-minutes">00</span>:<span id="stopwatch-seconds">00</span>.<span id="stopwatch-milliseconds">00</span>
+        </div>
+        <div class="stopwatch-controls">
+            <button id="startStopwatch" class="btn primary">Başlat</button>
+            <button id="pauseStopwatch" class="btn secondary" style="display: none;">Duraklat</button>
+            <button id="resetStopwatch" class="btn danger">Sıfırla</button>
+            <button id="lapStopwatch" class="btn secondary">Tur</button>
+        </div>
+    </div>
+
+    <div class="laps-container">
+        <h2>Turlar</h2>
+        <div class="laps-list">
+            <!-- Laps will be added here dynamically -->
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/stopwatch.js"></script> 
+            
             <div class="seo-content-area">
-                {{{seoContent}}}
+                
             </div>
         </main>
     </div>
 
     <!-- Scripts -->
-    {{#if showClock}}
-    <script src="/assets/js/clock.js"></script>
-    {{/if}}
 
-    {{#if site.analytics.id}}
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.analytics.id}}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{site.analytics.id}}', {
-            'language': 'tr',
-            'country': 'TR'
-        });
-    </script>
-    {{/if}}
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/main.js"></script>
 </body>

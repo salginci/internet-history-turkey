@@ -1,0 +1,29 @@
+---
+title: "Kronometre - kronometre.com"
+layout: "layout.hbs"
+---
+
+<div class="stopwatch-container">
+    <h1 class="page-title">Kronometre</h1>
+
+    <div class="stopwatch-display">
+        <div class="time-display">
+            <span id="stopwatch-minutes">00</span>:<span id="stopwatch-seconds">00</span>.<span id="stopwatch-milliseconds">00</span>
+        </div>
+        <div class="stopwatch-controls">
+            <button id="startStopwatch" class="btn primary">Başlat</button>
+            <button id="pauseStopwatch" class="btn secondary" style="display: none;">Duraklat</button>
+            <button id="resetStopwatch" class="btn danger">Sıfırla</button>
+            <button id="lapStopwatch" class="btn secondary">Tur</button>
+        </div>
+    </div>
+
+    <div class="laps-container">
+        <h2>Turlar</h2>
+        <div class="laps-list">
+            <!-- Laps will be added here dynamically -->
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/stopwatch.js"></script> 

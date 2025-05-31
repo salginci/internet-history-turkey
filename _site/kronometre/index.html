@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Online Kronometre - Ücretsiz Dijital Kronometre</title>
     <meta name="description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı. Hemen alarmınızı kurun, hatırlatıcılarınızı ayarlayın.">
     <meta name="keywords" content="online alarm, alarm kur, dijital saat, zamanlayıcı, hatırlatıcı, Türkçe alarm, ücretsiz alarm">
     <meta name="language" content="Turkish">
@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://your-domain.com/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="Online Kronometre - Ücretsiz Dijital Kronometre">
     <meta property="og:description" content="Ücretsiz online alarm saati. Kolay kullanımlı, güvenilir ve hızlı alarm kurma aracı.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
-    {{#if site.enableAds}}
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{site.adsense.client}}" crossorigin="anonymous"></script>
-    {{/if}}
 
     <style>
         :root {
@@ -102,7 +98,6 @@
                     <a href="/" class="logo">kronometre<span>.com</span></a>
                 </div>
 
-                {{!-- Main Navigation (visible on larger screens) - Moved outside mobile-nav-links --}}
                 <nav class="main-nav">
                     <a href="/alarm" class="nav-item">
                         <i class="ri-alarm-line"></i>
@@ -122,9 +117,7 @@
                     </a>
                 </nav>
 
-                {{!-- Mobile navigation links (hidden by default on larger screens) – now contains the main nav so that it is toggled on mobile – the hamburger icon (inside nav-right) toggles this div --}}
                 <div class="mobile-nav-links">
-                    {{!-- Re-inserted main navigation (hidden on larger screens, toggled on mobile) --}}
                     <nav class="main-nav">
                         <a href="/alarm" class="nav-item">
                             <i class="ri-alarm-line"></i>
@@ -145,13 +138,11 @@
                     </nav>
                 </div>
 
-                {{!-- (Hamburger icon (hidden on larger screens) is now inside nav-right and toggles the mobile-nav-links div.) --}}
 
                 <div class="nav-right">
                      <button class="theme-toggle">
                         <i class="ri-moon-line"></i>
                     </button>
-                    {{!-- Re-inserted hamburger icon (hidden on larger screens) inside nav-right – toggles the mobile menu --}}
                     <button class="hamburger-icon" aria-label="Menu">
                         <i class="ri-menu-line"></i>
                     </button>
@@ -161,33 +152,82 @@
 
         <!-- Page Content -->
         <main class="content">
-            {{{ content }}}
             
-            {{!-- SEO Content Area --}}
+<link rel="stylesheet" href="/assets/css/stopwatch.css">
+
+<div class="clock-container">
+    <h1 class="page-title">Kronometre</h1>
+    
+    <div class="digital-clock">
+        <div class="time">00:00:00</div>
+        <div class="date-container">
+            <button class="set-alarm-btn">
+                <i class="ri-play-line"></i>
+                <span>Başlat</span>
+            </button>
+            <button class="lap-btn" disabled>
+                <i class="ri-flag-line"></i>
+                <span>Tur</span>
+            </button>
+            <button class="reset-btn" disabled>
+                <i class="ri-refresh-line"></i>
+                <span>Sıfırla</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="laps-container">
+        <div class="laps-header">
+            <span>Tur</span>
+            <span>Süre</span>
+            <span>Fark</span>
+        </div>
+        <div class="laps-list">
+            <!-- Lap times will be added here dynamically -->
+        </div>
+    </div>
+
+    <div class="advertisement-box">
+        <span class="ad-text">Reklam</span>
+        <span class="ad-size">728x90</span>
+    </div>
+</div>
+
+<script src="/assets/js/stopwatch.js"></script> 
+            
             <div class="seo-content-area">
-                {{{seoContent}}}
+                <h2>Online Kronometre - Hassas Zaman Ölçümü İçin Profesyonel Araç</h2>
+
+<p>Profesyonel ihtiyaçlarınız için tasarlanmış online kronometre uygulamamız ile hassas zaman ölçümü yapabilirsiniz. Spor antrenmanları, egzersizler, yarışmalar veya herhangi bir zaman ölçümü ihtiyacınız için ideal çözüm.</p>
+
+<h2>Özellikler</h2>
+<ul>
+    <li>Milisaniye hassasiyetinde ölçüm</li>
+    <li>Tur zamanı kaydetme özelliği</li>
+    <li>Kolay kullanılabilir arayüz</li>
+    <li>Mobil uyumlu tasarım</li>
+    <li>Ücretsiz ve reklamsız kullanım</li>
+</ul>
+
+<h2>Kullanım Alanları</h2>
+<p>Online kronometremiz birçok farklı alanda kullanılabilir:</p>
+<ul>
+    <li>Spor antrenmanları ve egzersizler</li>
+    <li>Yarışma ve müsabakalar</li>
+    <li>Akademik deneyler ve laboratuvar çalışmaları</li>
+    <li>Performans ölçümleri</li>
+    <li>Kişisel gelişim ve zaman yönetimi</li>
+</ul>
+
+<h2>Neden Online Kronometre?</h2>
+<p>Online kronometre kullanmanın avantajları saymakla bitmez. Herhangi bir uygulama indirmenize gerek kalmaz, tarayıcınız üzerinden hemen kullanmaya başlayabilirsiniz. Ayrıca, farklı cihazlarınızda senkronize çalışır ve internet bağlantınız olduğu sürece güvenilir bir şekilde çalışmaya devam eder.</p>
+
             </div>
         </main>
     </div>
 
     <!-- Scripts -->
-    {{#if showClock}}
-    <script src="/assets/js/clock.js"></script>
-    {{/if}}
 
-    {{#if site.analytics.id}}
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.analytics.id}}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{site.analytics.id}}', {
-            'language': 'tr',
-            'country': 'TR'
-        });
-    </script>
-    {{/if}}
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/main.js"></script>
 </body>

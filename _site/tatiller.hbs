@@ -1,0 +1,620 @@
+---
+title: "Türkiye Resmi Tatil Günleri 2024 - Tatil Takvimi"
+layout: "layout.hbs"
+showClock: false
+eleventyExcludeFromCollections: true
+seoContent: |
+    <h2>Türkiye Resmi Tatil Günleri ve Özel Günler Takvimi</h2>
+    
+    <p>Türkiye'deki tüm resmi tatil günleri, dini bayramlar, milli bayramlar ve özel günlerin detaylı listesi. Tatil planlarınızı yaparken güncel tatil takvimimizi kullanabilir, önemli günlere kalan süreyi takip edebilirsiniz.</p>
+    
+    <h2>Resmi Tatil Günleri Kategorileri</h2>
+    <ul>
+        <li>Milli Bayramlar (23 Nisan, 19 Mayıs, 30 Ağustos, 29 Ekim)</li>
+        <li>Dini Bayramlar (Ramazan ve Kurban Bayramları)</li>
+        <li>Özel Günler (Yılbaşı, İşçi Bayramı, vb.)</li>
+        <li>Resmi Tatiller</li>
+    </ul>
+    
+    <h2>Tatil Takvimi Özellikleri</h2>
+    <ul>
+        <li>Güncel ve resmi tatil günleri listesi</li>
+        <li>Her tatil için detaylı bilgi ve açıklamalar</li>
+        <li>Tatile kalan süre sayacı</li>
+        <li>Mobil uyumlu tasarım</li>
+        <li>Ücretsiz erişim</li>
+    </ul>
+    
+    <h2>Tatil Planlaması İçin Öneriler</h2>
+    <p>Tatil günlerinizi en verimli şekilde planlamak için takvimimizi kullanabilirsiniz. Özellikle uzun tatil dönemlerinde erken planlama yaparak, seyahat ve etkinliklerinizi daha ekonomik ve keyifli hale getirebilirsiniz. Tatil takvimimiz sayesinde:</p>
+    <ul>
+        <li>Tüm resmi tatil günlerini tek bir yerden takip edebilirsiniz</li>
+        <li>Tatile kalan süreyi görebilirsiniz</li>
+        <li>Tatil planlarınızı önceden yapabilirsiniz</li>
+        <li>Özel günleri kaçırmazsınız</li>
+    </ul>
+    
+    <h2>Güncel Tatil Bilgileri</h2>
+    <p>Türkiye'deki resmi tatil günleri ve özel günler hakkında en güncel bilgilere ulaşabilirsiniz. Takvimimiz sürekli güncellenmekte olup, resmi tatil günleri ve özel günler hakkında detaylı bilgiler sunmaktadır.</p>
+---
+
+{{!-- Background Animation Container --}}
+
+<div class="container">
+    <h1 class="page-title">Tatil Günleri</h1>
+    
+    <div class="holidays-container">
+        {{!--        <div class="holiday-filters">
+            <button class="filter-btn active" data-filter="all">Tümü</button>
+            <button class="filter-btn" data-filter="religious">Dini Bayramlar</button>
+            <button class="filter-btn" data-filter="national">Milli Bayramlar</button>
+            <button class="filter-btn" data-filter="other">Diğer</button>
+        </div>--}}
+
+        <div class="holidays-list">
+            {{!-- Debug: Number of holidays being rendered --}}
+            
+            {{#each (uniqueHolidays holidays)}}
+            <div class="holiday-item {{this.type}}">
+                {{!-- Debug: Output holiday title --}}
+                {{!-- {{this.title}} --}}
+                <div class="holiday-date">
+                    <div class="month">{{this.month}}</div>
+                    <div class="day">{{this.day}}</div>
+                    <div class="year">{{this.year}}</div>
+                </div>
+                <div class="holiday-info">
+                    <a href="#" class="holiday-title" data-slug="{{this.slug}}">
+                        <h3>{{this.title}}</h3>
+                    </a>
+                    <p class="holiday-duration">{{this.duration}}</p>
+                    <p class="holiday-description">{{this.description}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        {{!-- Container for the individual holiday detail view --}}
+        <div id="holiday-detail-container" style="display: none;"></div>
+    </div>
+
+    <div class="advertisement-box">
+        <span class="ad-text">Reklam</span>
+        <span class="ad-size">728x90</span>
+    </div>
+</div>
+
+{{!-- Embed holidays data for client-side JavaScript --}}
+{{!-- Debug: Number of holidays before JSON embedding --}}
+{{!-- Number of holidays before JSON: {{holidays.length}} --}}
+<script type="application/json" id="holidays-data">
+    {{{json holidays}}}
+</script>
+
+<!-- Alarm Setup Modal -->
+<div class="modal" id="alarmModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Alarm Düzenle</h2>
+            <button class="close-modal">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="time-picker">
+                <div class="time-section">
+                    <label>Saat</label>
+                    <div class="time-input">
+                        <button class="time-arrow prev">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </button>
+                        <input type="text" class="hour-input" value="01" readonly>
+                        <button class="time-arrow next">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="time-section">
+                    <label>Dakika</label>
+                    <div class="time-input">
+                        <button class="time-arrow prev">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </button>
+                        <input type="text" class="minute-input" value="00" readonly>
+                        <button class="time-arrow next">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sound-section">
+                <label>Ses</label>
+                <div class="sound-selector">
+                    <select class="alarm-sound">
+                        <option value="classic-bell">Klasik Çan</option>
+                        <option value="digital-alarm">Dijital Alarm</option>
+                        <option value="counter-bell">Masa Zili</option>
+                        <option value="school-bell">Okul Zili</option>
+                        <option value="modern-ding">Modern Ding</option>
+                        <option value="church-bell">Kilise Çanı</option>
+                        <option value="electronic-beep">Elektronik Bip</option>
+                        <option value="alarm-clock">Çalar Saat</option>
+                        <option value="digital-watch">Dijital Saat</option>
+                        <option value="emergency">Acil Durum</option>
+                    </select>
+                    <button class="play-sound">
+                        <i class="ri-play-line"></i>
+                    </button>
+                    <button class="sound-options">
+                        <i class="ri-more-2-fill"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="title-section">
+                <label>Başlık</label>
+                <input type="text" class="alarm-title" placeholder="Alarm" value="Alarm">
+            </div>
+
+            <div class="repeat-section">
+                <label class="repeat-label">
+                    <input type="checkbox" class="repeat-checkbox">
+                    <span class="checkbox-text">Yinele</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="test-alarm">Test Et</button>
+            <div class="right-buttons">
+                <button class="cancel-alarm">İptal</button>
+                <button class="save-alarm">Başlat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Wait for the DOM to be fully loaded before running the script
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get holidays data from the script tag
+        let holidaysDataScript = document.getElementById('holidays-data');
+        let holidaysData = [];
+        if (holidaysDataScript) {
+            console.log('Raw holidays data script content:', holidaysDataScript.textContent);
+            try {
+                const rawHolidays = JSON.parse(holidaysDataScript.textContent);
+                // Filter out duplicates based on title, month, and day, keeping the first occurrence
+                const uniqueHolidaysMap = new Map();
+                rawHolidays.forEach(holiday => {
+                    // Create a compound key based on title, month index, day, and year
+                    const uniqueKey = `${holiday.title}-${holiday.monthIndex}-${holiday.day}-${holiday.year}`;
+                    if (!uniqueHolidaysMap.has(uniqueKey)) {
+                        uniqueHolidaysMap.set(uniqueKey, holiday);
+                    }
+                });
+                holidaysData = Array.from(uniqueHolidaysMap.values());
+
+                // Debug: Print the number of items in the parsed and filtered holidaysData array
+                console.log('Number of holidays after JSON parsing and filtering:', holidaysData.length);
+
+            } catch (e) {
+                console.error("Error parsing holidays data:", e);
+            }
+        }
+
+        const holidayListContainer = document.querySelector('.holidays-container');
+        const holidayDetailContainer = document.getElementById('holiday-detail-container');
+        const pageTitle = document.querySelector('.page-title');
+        const holidayFilters = document.querySelector('.holiday-filters');
+        const holidaysList = document.querySelector('.holidays-list');
+
+        // Function to update countdown timer (adapted from previous template)
+        function updateCountdownTimer(holidayDate) {
+            const countdownTimerElement = document.querySelector('#holiday-detail-container .countdown-timer');
+            if (!countdownTimerElement) return; // Exit if timer element is not found
+
+            const now = new Date();
+            const timeLeft = holidayDate - now;
+
+            if (timeLeft <= 0) {
+                countdownTimerElement.innerHTML = `
+                    <div class="holiday-passed">
+                        <i class="ri-calendar-check-line"></i>
+                        <p>Bu tatil günü geçti!</p>
+                    </div>
+                `;
+                // Clear any existing interval
+                const intervalId = countdownTimerElement.dataset.intervalId;
+                if (intervalId) clearInterval(intervalId);
+
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Update the display elements within the detail container
+            const daysEl = countdownTimerElement.querySelector('#days');
+            const hoursEl = countdownTimerElement.querySelector('#hours');
+            const minutesEl = countdownTimerElement.querySelector('#minutes');
+            const secondsEl = countdownTimerElement.querySelector('#seconds');
+
+            if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Function to render holiday detail
+        function renderHolidayDetail(holiday) {
+            // Hide holiday list, filters, and page title
+            if (holidaysList) holidaysList.style.display = 'none';
+            if (holidayFilters) holidayFilters.style.display = 'none';
+            if (pageTitle) pageTitle.style.display = 'none';
+
+            // Template for the holiday detail view (reusing structure)
+            const detailTemplate = `
+                <button id="back-to-list"><i class="ri-arrow-left-line"></i> Geri Dön</button>
+                <div class="clock-container">
+                    <div class="holiday-countdown">
+                        <h1 class="page-title">${holiday.title}</h1>
+
+                        <div class="countdown-info">
+                            <div class="holiday-date">
+                                <div class="month">${holiday.month}</div>
+                                <div class="day">${holiday.day}</div>
+                                <div class="year">${holiday.year}</div>
+                            </div>
+                            <div class="holiday-details">
+                                <p class="holiday-duration">${holiday.duration}</p>
+                                <p class="holiday-description">${holiday.description}</p>
+                            </div>
+                        </div>
+
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="days">00</div>
+                                <div class="countdown-label">Gün</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="hours">00</div>
+                                <div class="countdown-label">Saat</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="minutes">00</div>
+                                <div class="countdown-label">Dakika</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="seconds">00</div>
+                                <div class="countdown-label">Saniye</div>
+                            </div>
+                        </div>
+
+                        <div class="countdown-actions">
+                            <!-- Buttons removed as requested -->
+                        </div>
+                    </div>
+
+                    <div class="advertisement-box">
+                        <span class="ad-text">Reklam</span>
+                        <span class="ad-size">728x90</span>
+                    </div>
+                </div>
+
+                <!-- Alarm Setup Modal - simplified for now -->
+                <div class="modal" id="alarmModal" style="display: none;">
+                   {{!-- Alarm setup modal content would go here if needed --}}
+                </div>
+            `;
+
+            holidayDetailContainer.innerHTML = detailTemplate;
+            // Ensure the container is visible after setting its content
+            if (holidayDetailContainer) holidayDetailContainer.style.display = 'block';
+
+            // Update countdown initially and every second
+            const holidayDate = new Date(holiday.year, holiday.monthIndex, holiday.day);
+            updateCountdownTimer(holidayDate);
+            const intervalId = setInterval(() => updateCountdownTimer(holidayDate), 1000);
+            // Store interval ID to clear it later
+            document.querySelector('#holiday-detail-container .countdown-timer').dataset.intervalId = intervalId;
+
+            // Add event listener for the back button
+            document.getElementById('back-to-list').addEventListener('click', () => {
+                hideHolidayDetail();
+            });
+
+            // Add event listener for share button (reusing existing logic)
+            document.getElementById('shareBtn').addEventListener('click', async () => {
+                 const shareData = {
+                    title: holiday.title,
+                    text: `${holiday.title} için geri sayım: ${document.querySelector('#holiday-detail-container #days').textContent} gün kaldı!`,
+                    url: window.location.href // May need adjustment if page URL changes
+                };
+
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    // Fallback for browsers that don't support Web Share API
+                    const dummy = document.createElement('input');
+                    document.body.appendChild(dummy);
+                    dummy.value = window.location.href;
+                    dummy.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummy);
+
+                    // Show toast notification (assuming toast styles exist)
+                    const toast = document.createElement('div');
+                    toast.className = 'toast';
+                    toast.textContent = 'Link kopyalandı!';
+                    document.body.appendChild(toast);
+                    setTimeout(() => {
+                        toast.classList.add('show');
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                            setTimeout(() => {
+                                document.body.removeChild(toast);
+                            }, 300);
+                        }, 2000);
+                    }, 100);
+                }
+            });
+
+            // Note: Alarm button functionality needs to be re-implemented or adapted.
+        }
+
+        // Function to hide holiday detail and show list
+        function hideHolidayDetail() {
+            holidayDetailContainer.style.display = 'none';
+            document.querySelector('.holidays-list').style.display = 'flex'; // Show only the list
+            // Show the holiday filters and page title again
+            if (holidayFilters) holidayFilters.style.display = 'flex';
+            if (pageTitle) pageTitle.style.display = 'block'; // Assuming page title uses block display
+
+            // Clear the countdown interval when hiding the detail
+            const countdownTimerElement = document.querySelector('#holiday-detail-container .countdown-timer');
+            if (countdownTimerElement) {
+                const intervalId = countdownTimerElement.dataset.intervalId;
+                if (intervalId) clearInterval(intervalId);
+            }
+        }
+
+        // Add event listeners to holiday titles to show detail
+        document.querySelectorAll('.holiday-title').forEach(titleLink => {
+            titleLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const slug = this.getAttribute('data-slug');
+                const selectedHoliday = holidaysData.find(h => h.slug === slug);
+                if (selectedHoliday) {
+                    renderHolidayDetail(selectedHoliday);
+                }
+            });
+        });
+
+        // Add event listener to the dynamically added "Geri Dön" button
+        holidayDetailContainer.addEventListener('click', function(e) {
+            if (e.target && e.target.id === 'back-to-list') {
+                // Hide the detail container
+                holidayDetailContainer.style.display = 'none';
+                // Show the holiday list and filters again
+                if (holidaysList) holidaysList.style.display = 'flex';
+                if (holidayFilters) holidayFilters.style.display = 'flex'; // Assuming filters use flex display
+            }
+        });
+
+        // Initial filter application (show all by default)
+        const allFilterButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allFilterButton) {
+            allFilterButton.click(); // Simulate click to show all initially
+        }
+    }); // End of DOMContentLoaded listener
+</script>
+
+{{!-- Styles for the holiday list and detail --}}
+<style>
+    .container {
+        max-width: 800px; /* Match the max-width of the holiday list */
+        margin: 0 auto; /* Center the container */
+        padding: 0 1rem; /* Add some horizontal padding */
+        position: relative; /* Ensure z-index works */
+        z-index: 10; /* Give it a stacking context and layer */
+    }
+
+    .holiday-countdown {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .countdown-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .countdown-item {
+        text-align: center;
+    }
+
+    .countdown-value {
+        font-family: 'DSEG14Classic-Regular', monospace;
+        font-size: 4rem;
+        color: var(--primary-color);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .countdown-label {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .countdown-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin: 2rem 0;
+    }
+
+    .share-btn {
+        background: var(--bg-color);
+        color: var(--text-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .share-btn:hover {
+        background: var(--primary-color);
+        color: #000;
+    }
+
+    .holiday-passed {
+        text-align: center;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 12px;
+        margin: 2rem 0;;
+    }
+
+    .holiday-passed i {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .holiday-passed p {
+        font-size: 1.5rem;
+        color: var(--text-color);
+    }
+
+    @media (max-width: 768px) {
+        .countdown-info {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .countdown-timer {
+            gap: 1rem;
+        }
+
+        .countdown-value {
+            font-size: 3rem;
+        }
+
+        .countdown-actions {
+            flex-direction: column;
+        }
+
+        .share-btn, .set-alarm-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .holiday-info {
+        flex-grow: 1;
+    }
+
+    .holiday-duration {
+        color: white;
+    }
+
+    .holiday-actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .holidays-container {
+        width: 100%;
+        margin: 2rem auto; /* Center and add vertical space */
+        padding: 0 1rem; /* Add horizontal padding */
+        min-height: 500px; /* Set a minimum height to prevent shrinking */
+        /* Other holiday list styles */
+    }
+
+    #holiday-detail-container {
+        max-width: 800px; /* Ensure consistent width with holiday list */
+        margin: 2rem auto; /* Center and add vertical space */
+        padding: 0 1rem; /* Add horizontal padding */
+        position: relative; /* Ensure z-index works */
+        z-index: 20; /* Layer above the main container */
+        /* Other detail container styles */
+    }
+</style>
+
+{{!-- Background Animation Styles --}}
+<style>
+    /* Define CSS Variables for the animation */
+    :root {
+        --primary-color-rgb: 0, 123, 255; /* Example RGB for primary color */
+        --secondary-color-rgb: 40, 167, 69; /* Example RGB for secondary color */
+    }
+
+    /* Background Animation Styles for main.content */
+    main.content {
+        position: relative; /* Needed for absolute positioning of pseudo-elements */
+        overflow: hidden; /* Hide overflowing animation */
+        z-index: 1; /* Ensure content is above animation */
+    }
+
+    main.content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.2) 0%, transparent 15%); /* Subtle white sparkle */
+        pointer-events: none; /* Allow clicks to pass through */
+        z-index: -1; /* Ensure it stays behind content */
+        animation: twinkling 5s infinite ease-in-out alternate;
+    }
+
+    /* Note: ::after is not used for this effect, can be removed or used for another layer if needed */
+    main.content::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        /* Keep or remove if another layer is desired */
+    }
+
+    @keyframes twinkling {
+        0% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 0.5; transform: scale(1); }
+    }
+</style> 
